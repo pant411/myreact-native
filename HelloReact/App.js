@@ -1,41 +1,32 @@
-import React from 'react';
-import { SectionList, StyleSheet, Text, View } from 'react-native';
+import React, { useState } from "react";
+import { View, Image, Text, StyleSheet } from "react-native";
+
+const Van = () => {
+  return (
+    <View style={styles.container}>
+      <Image source={{uri: 'https://pbs.twimg.com/profile_images/954662123958947840/vq0XYxxq_400x400.jpg'}} 
+             style={styles.image}
+      />
+      <Text style={styles.text}>Hello World.</Text>
+    </View>
+  )
+}
 
 const styles = StyleSheet.create({
   container: {
-   flex: 1,
-   paddingTop: 22
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
   },
-  sectionHeader: {
-    paddingTop: 2,
-    paddingLeft: 10,
-    paddingRight: 10,
-    paddingBottom: 2,
-    fontSize: 14,
-    fontWeight: 'bold',
-    backgroundColor: 'rgba(247,247,247,1.0)',
+  text: {
+    color: 'green',
+    fontSize: 30
   },
-  item: {
-    padding: 10,
-    fontSize: 18,
-    height: 44,
-  },
-})
+  image: {
+    width: 100,
+    height: 100,
+    borderRadius: 100 / 2
+  }
+});
 
-const SectionListBasics = () => {
-    return (
-      <View style={styles.container}>
-        <SectionList
-          sections={[
-            {title: 'D', data: ['Devin', 'Dan', 'Dominic']},
-            {title: 'J', data: ['Jackson', 'James', 'Jillian', 'Jimmy', 'Joel', 'John', 'Julie']},
-          ]}
-          renderItem={({item}) => <Text style={styles.item}>{item}</Text>}
-          renderSectionHeader={({section}) => <Text style={styles.sectionHeader}>{section.title}</Text>}
-          keyExtractor={(item, index) => index}
-        />
-      </View>
-    );
-}
-
-export default SectionListBasics;
+export default Van;
