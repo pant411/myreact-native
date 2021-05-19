@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { View, Image, Text, StyleSheet, FlatList } from "react-native";
+import { View, Image, Text, StyleSheet, FlatList, Alert } from "react-native";
 import Header from './components/Header'
 import ListItem from './components/ListItem'
+import AddItem from './components/AddItem'
 import uuid from 'uuid-random';
 
 /*const Van = () => {
@@ -30,11 +31,23 @@ const App = () => {
     })
   }
 
+  const addItem = (text) => {
+    if(!text){
+      Alert.alert('Error','กรุณาใส่ข้อมูล', {text: 'OK'});
+    }
+    else{
+      setItems(prevItems => {
+        return [{id: uuid(), text}, ...prevItems];
+      })
+    }      
+  }
+
   return (
     <View style={styles.container}>
       <Header />
+      <AddItem addItem={addItem} /> 
       <FlatList data={items} 
-            renderItem={({item}) => (<ListItem item={item} deleteItems={deleteItem}/>)} />
+            renderItem={({item}) => (<ListItem item={item} deleteItem={deleteItem}/>)} />
     </View>
   )
 }

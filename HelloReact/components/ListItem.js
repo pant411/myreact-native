@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import { View, Text, FlatList, StyleSheet, TouchableOpacity } from "react-native";
-import Icon from 'react-native-vector-icons/FontAwesome'
+import Icon from 'react-native-vector-icons/dist/FontAwesome'
 
-const ListItem = ({item}) => {
+const ListItem = ({item,deleteItem}) => {
     return (
         <TouchableOpacity style={styles.listItem}>
             <View style={styles.listItemView}>
                 <Text style={styles.listItemText}>{item.text}</Text>
-                <Icon name="rocket" size={30} color="#900" />
+                <Icon name="remove" size={20} color="firebrick" 
+                    onPress={() => deleteItem(item.id)}
+                />
             </View>
         </TouchableOpacity>
     )
